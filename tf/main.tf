@@ -43,7 +43,7 @@ resource "aws_kinesis_firehose_delivery_stream" "demo_delivery_stream" {
     bucket_arn = aws_s3_bucket.kilole01.arn
     buffering_interval = 60
     buffering_size = 1
-    prefix = "kilole-data/"
+    prefix = var.s3_prefix
 
     cloudwatch_logging_options {
       enabled             = true
