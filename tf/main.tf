@@ -35,7 +35,7 @@ bucket = var.bucket_name
 #############################
 
 resource "aws_kinesis_firehose_delivery_stream" "demo_delivery_stream" {
-  name        = "kilole-project-delivery"
+  name        = var.firehose_name
   destination = "extended_s3"
 
   extended_s3_configuration {
@@ -47,13 +47,13 @@ resource "aws_kinesis_firehose_delivery_stream" "demo_delivery_stream" {
 
     cloudwatch_logging_options {
       enabled             = true
-      log_group_name      = "/aws/kinesisfirehose/kilole-project-delivery"
-      log_stream_name     = "extended_s3_log_stream"
+      log_group_name      = var.cwlog_name
+      log_stream_name     = var.cwstream
     }
 }
 }
 resource "aws_iam_role" "firehose" {
-  name = "DemoFirehoseAssumeRole"
+  name = "FirehoseAssumeRole"
 
   assume_role_policy = <<EOF
 {
@@ -109,15 +109,15 @@ resource "aws_iam_role_policy_attachment" "firehose_s3" {
 ############################################
 
 resource "aws_iot_topic_rule" "rule" {
-  name        = "project_kilole"
+  name        = var.iot_rule01
   #description = "Example rule"
   enabled     = true
-  sql         = "SELECT * FROM '/kilole-topic/#'"
+  sql         = var.iot_rule_sql
   sql_version = "2016-03-23"
   
     firehose {
       delivery_stream_name = aws_kinesis_firehose_delivery_stream.demo_delivery_stream.name
-      role_arn            = "arn:aws:iam::480053995985:role/service-role/kilole_iot_rule_role"
+      role_arn            = var.iot_rule_role_firehose
       separator = "\n"
     }
   }
@@ -128,11 +128,11 @@ resource "aws_iot_topic_rule" "rule" {
 #############################################
 
 resource "aws_cloudwatch_log_group" "demo_firebose_log_group" {
-  name = "/aws/kinesisfirehose/kilole-project-delivery"
+  name = var.cwlog_name
  
 }
 
 resource "aws_cloudwatch_log_stream" "demo_firebose_log_stream" {
-  name           = "extended_s3_log_stream"
+  name           = var.cwstream
   log_group_name = aws_cloudwatch_log_group.demo_firebose_log_group.name
 }
