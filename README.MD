@@ -58,5 +58,4 @@ to deploy the resources.
 
 4 - Navigate to the AWS IoT service and click on 'Connect Device'
 
-
-
+![AWS IoT Homepage](step1.png)
