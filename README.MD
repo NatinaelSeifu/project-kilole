@@ -56,6 +56,10 @@ to deploy the resources.
 
 ### Emulating your computer as an IoT device
 
-4 - Navigate to the AWS IoT service and click on 'Connect Device'
+Navigate to the AWS IoT service and click on 'Connect Device'
 
 ![AWS IoT Homepage](step1.png)
+
+Follow the instructions
+
+![Device registration instructions](step2.png)
