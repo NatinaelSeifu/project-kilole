@@ -29,4 +29,30 @@ We used this service to query the data stored in S3 and prepare the data for ana
 
 We used this service to visualize the IoT device data.
 
+## Working with the project
+
+### Prerequisites 
+
+1 - An AWS Account with permissions to access AWS IoT Core, Amazon KDF, Amazon Athena, and Amazon S3. 
+2 - AWS CLI access
+3 - A complete setup of Terraform
+
+### Steps
+
+1 - Change your directory to the project-kilole folder.
+2 - Run 
+```
+hcl
+terraform -plan
+```
+to see the resources that will be deployed.
+
+3 - Run 
+```
+hcl
+terraform -apply
+```
+to deploy the resources.
+
+
 
