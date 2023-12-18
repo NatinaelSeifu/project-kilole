@@ -54,5 +54,9 @@ terraform -apply
 ```
 to deploy the resources.
 
+### Emulating your computer as an IoT device
+
+4 - Navigate to the AWS IoT service and click on 'Connect Device'
+
 
 
