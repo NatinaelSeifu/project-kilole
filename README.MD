@@ -41,15 +41,13 @@ We used this service to visualize the IoT device data.
 
 1 - Change your directory to the project-kilole folder.
 2 - Run 
-```
-hcl
+```hcl
 terraform -plan
 ```
 to see the resources that will be deployed.
 
 3 - Run 
-```
-hcl
+```hcl
 terraform -apply
 ```
 to deploy the resources.
