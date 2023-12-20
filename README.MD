@@ -27,7 +27,7 @@ We used this service to query the data stored in S3 and prepare the data for ana
 
 ### PowerBI
 
-We used this service to visualize the IoT device data.
+We used this service to visualize the IoT device data. you can use Amazon quicksight but its kind of subscription.
 
 ## Working with the project
 
@@ -39,10 +39,10 @@ We used this service to visualize the IoT device data.
 
 ### Steps
 
-1 - Change your directory to the project-kilole folder.
+1 - Change your directory to the /project-kilole/tf folder. define your `terraform.tfvars`  and now you are good to go.
 
 2 - Run
-`terraform-init`
+`terraform-init` to initialize terraform
 
 3 - Run 
 `terraform-plan`
