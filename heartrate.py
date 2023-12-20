@@ -1,14 +1,14 @@
 import json
 import random
 import datetime
-import boto3
+#import boto3
 import time
 
 highHeartrateNames = ['Bailey', 'Beatrice', 'Beau', 'Bella', 'Ben', 'Beth']
 nonhighHeartrateNames = ['Branden', 'Brady', 'Bonny']
 allNames = list(set().union(highHeartrateNames, nonhighHeartrateNames))
 
-iot = boto3.client('iot-data');
+#iot = boto3.client('iot-data');
 
 # generate normal heart rate with probability .95
 def getNormalHeartRate():
@@ -33,14 +33,14 @@ while True:
     if (rnd < 0.05):
         data = json.dumps(getHighHeartRate())
         print (data)
-        response = iot.publish(
-             topic='/kilole-topic/heartrate',
-             payload=data
-         ) 
+     #   response = iot.publish(
+      #       topic='/kilole-topic/heartrate',
+       #      payload=data
+        # ) 
     else:
         data = json.dumps(getNormalHeartRate())
         print (data)
-        response = iot.publish(
-             topic='/kilole-topic/heartrate',
-             payload=data
-         )
+        #response = iot.publish(
+         #    topic='/kilole-topic/heartrate',
+          #   payload=data
+         #)
