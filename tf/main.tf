@@ -24,7 +24,7 @@ provider "aws" {
 
 resource "aws_s3_bucket" "kilole01" {
 bucket = var.bucket_name
-
+force_destroy = true
   tags = {
     name = var.bucket_tag
   }
@@ -135,4 +135,26 @@ resource "aws_cloudwatch_log_group" "demo_firebose_log_group" {
 resource "aws_cloudwatch_log_stream" "demo_firebose_log_stream" {
   name           = var.cwstream
   log_group_name = aws_cloudwatch_log_group.demo_firebose_log_group.name
+}
+
+#################################
+#  aws athena
+#################################
+
+resource "aws_athena_named_query" "AthenaNamedQuery" {
+    name = "kilole-data-table"
+    database = "default"
+    query = <<EOF
+CREATE EXTERNAL TABLE IF NOT EXISTS `default`.`kilole_table` (
+  `heartRate` int,
+  `userId` string,
+  `rateType` string,
+  `dateTime` timestamp
+)
+ROW FORMAT SERDE 'org.openx.data.jsonserde.JsonSerDe'
+WITH SERDEPROPERTIES ('ignore.malformed.json' = 'TRUE')
+STORED AS INPUTFORMAT 'org.apache.hadoop.mapred.TextInputFormat' OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
+LOCATION 's3://${aws_s3_bucket.kilole01.id}/kilole-data/'
+TBLPROPERTIES ('classification' = 'json');
+EOF
 }
