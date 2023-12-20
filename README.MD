@@ -34,15 +34,17 @@ We used this service to visualize the IoT device data. you can use Amazon quicks
 ### Prerequisites 
 
 1 - An AWS Account with permissions to access AWS IoT Core, Amazon KDF, Amazon Athena, and Amazon S3. 
+
 2 - AWS CLI access
+
 3 - A complete setup of Terraform
 
 ### Steps
 
-1 - Change your directory to the /project-kilole/tf folder. define your `terraform.tfvars`  and now you are good to go.
+1 - Change your directory to the /project-kilole/tf directory. define your `terraform.tfvars`  and now you are good to go.
 
 2 - Run
-`terraform-init` to initialize terraform
+`terraform-init` to initialize terraform.
 
 3 - Run 
 `terraform-plan`
