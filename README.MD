@@ -1,6 +1,6 @@
 # Kilole Project
 
-##Introduction
+## Introduction
 
 This project demonstrates a near real-time data pipeline for IoT devices. The data pipeline uses AWS Services and Terraform to automate the deployment of the AWS resources.
 
@@ -23,7 +23,7 @@ We used this service to store the data ingested from the IoT device.
 
 ### Amazon Athena
 
-We used this service to query the data stored in S3 and prepare the data for analysis.
+We used this service to query the data stored in S3 and prepare the data for analysis. After you create athena query it wont run first time so you need to create a Query result location from the console.
 
 ### PowerBI
 
@@ -40,19 +40,16 @@ We used this service to visualize the IoT device data.
 ### Steps
 
 1 - Change your directory to the project-kilole folder.
+
 2 - Run
 `terraform-init`
 
 3 - Run 
-```hcl
-terraform-plan
-```
+`terraform-plan`
 to see the resources that will be deployed.
 
 4 - Run 
-```hcl
-terraform-apply
-```
+`terraform-apply`
 to deploy the resources.
 
 ### Emulating your computer as an IoT device
